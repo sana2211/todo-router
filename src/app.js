@@ -31,8 +31,9 @@ const serializeTodo = todo => ({
 })
 
 app
-  .route('/v1/todos')
-  .get((req, res, next) => {
+.route('/v1/todos') //creating the endpoint route too fetch all todos record on the database
+  .get((req, res, next) => { // making our endpoint to only accpeHttp Get Request
+    // we're picking up the knex object middleware. Knex object is the persistence object.
     const knexInstance = req.app.get('db')
     TodoService.getTodos(knexInstance)
       .then(todos => {
